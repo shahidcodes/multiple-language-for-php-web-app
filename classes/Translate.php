@@ -2,9 +2,17 @@
 
 require "../vendor/autoload.php";
 use Stichoza\GoogleTranslate\TranslateClient;
-
+/*
+* To auto translate class given language array in file lang_en.php
+* it depends upon this https://github.com/Stichoza/google-translate-php
+* Thanks to Stichoza for making this wonderful lib
+*/
 class AutoTranslate{
-    
+    /**
+    * @param $languageID (array) id's of languges
+    * @return null
+    * Create lang translation file like lang_en.php for languages passed in @param
+    */
     function  __construct(array $languageID){
         foreach($languageID as $lID){
             $tr = new TranslateClient('en', $lID);
@@ -28,7 +36,9 @@ class AutoTranslate{
     }
 }
 
-
+/**
+* @param $languagesID (array) id's of language
+*/
 // insert you required language ids here from list below
 $languagesID = ['ar'];
 $autoTranslate = new AutoTranslate($languagesID);

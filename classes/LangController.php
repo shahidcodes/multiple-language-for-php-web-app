@@ -1,7 +1,13 @@
 <?php
-
+/**
+*   @author ShahidKhan
+*   @link   https://github.com/shahidkh4n/multiple-language-for-php-web-app
+*/
 class LangController{
     // If you used translator be sure to copy list from Translate.php
+    /**
+    * @var ids of languages
+    */
     public $langIDMap = [
         'en'        => 'English',
         'hi'        => 'Hindi',
@@ -68,6 +74,10 @@ class LangController{
         'cy'        => "Welsh",
         'yi'        => "Yiddish",
     ];
+    /**
+    * includes lang_*.php file based on current cookie value
+    * @return (array) of language map
+    */
     public function init()
     {
         $current_lang = $this->getCurrentLang();
@@ -81,6 +91,10 @@ class LangController{
         return $language;
     }
 
+    /**
+    * Returns Current Language ID
+    * @return languageID
+    */
     public function getCurrentLang()
     {
         if(isset($_COOKIE['lang'])){
@@ -88,12 +102,17 @@ class LangController{
         }
         return "en"; // By default return english
     }
-
+    /**
+    * Sets Cookie value which is supposed to be the ID of language
+    * @return (bool)
+    */
     public function setCurrentLang($lang)
     {
         return setcookie("lang", $lang, 0);
     }
-
+    /**
+    * @return (array) Language ID Name Pair
+    */
     public function getLangList(){
         $list = glob('classes/lang_*.php');
         $name = [];
