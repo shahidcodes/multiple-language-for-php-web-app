@@ -1,0 +1,4 @@
+vendor/
+classes/lang_*.php
+!classes/lang_en.php
+*.lock
